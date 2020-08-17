@@ -8,7 +8,11 @@
         @click-left="Home"
         @click-right="Refresh"
     />
-    <router-view></router-view>
+    <router-view
+        v-wechat-title="$route.meta.title"
+        img-set="/logo.png"
+    >
+    </router-view>
   </div>
 </template>
 
@@ -32,5 +36,6 @@
   .game_formula {
     margin-top: 20px;
     font-size: 40px;
+    font-weight:bold;
   }
 </style>

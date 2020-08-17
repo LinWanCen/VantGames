@@ -14,7 +14,7 @@ export default new Router({
       path: '/',
       name: 'Menu',
       component: Menu,
-      meta: {title: '林万程的智力训练'},
+      meta: {title: '林万程的脑锻炼'},
     },
     {
       path: '/Refresh',
