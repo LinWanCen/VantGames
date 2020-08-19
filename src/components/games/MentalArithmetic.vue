@@ -15,8 +15,8 @@
         @delete="onDelete"
     />
     <van-popup safe-area-inset-bottom
-        duration="0" :close-on-click-overlay="false" :closeable="true" @closed="Refresh"
-        v-model="showScore" position="bottom" :style="{ height: '35%' }">
+               duration="0" :close-on-click-overlay="false" :closeable="true" @closed="Refresh"
+               v-model="showScore" position="bottom" :style="{ height: '35%' }">
       <pre class="game_formula" style="font-size: 30px;">{{score}}</pre>
       <pre class="game_formula" style="margin-top: 0;font-size: 20px;">{{scoreEn}}</pre>
     </van-popup>
@@ -28,6 +28,8 @@
   const MentalArithmeticLine = () => import('@/components/games/MentalArithmeticLine.vue')
 
   import {timeFormatCn, timeFormatEn} from "@/util/timeFormat"
+
+  import MtaH5 from 'mta-h5-analysis';
 
   export default {
     components: {
@@ -64,9 +66,9 @@
         }
       }
     },
-    mounted(){
+    mounted() {
       let _this = this;
-      document.onkeydown = function(e) {
+      document.onkeydown = function (e) {
         let key = e.key;
         if (key >= 0 && key <= 9) {
           _this.onInput(key);
@@ -89,9 +91,15 @@
           if (this.currentIndex === this.n) {
             // 减去倒计时的 3 秒
             let time = new Date().getTime() - this.startTime - 3000;
-            this.score = this.n + ' 道计算题\n耗时 ' + timeFormatCn(time);
+            let timeCn = timeFormatCn(time);
+            this.score = this.n + ' 道计算题\n耗时 ' + timeCn;
             this.scoreEn = this.n + ' calculation questions\ntakes ' + timeFormatEn(time);
             this.showScore = true;
+            MtaH5.clickStat('MentalArithmeticScore', {
+              'n': this.n,
+              'time': time,
+              'timecn': timeCn,
+            })
             return;
           }
           this.currentInput = '_';

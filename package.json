@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "mta-h5-analysis": "^2.0.19",
     "vant": "^2.10.2",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3",
