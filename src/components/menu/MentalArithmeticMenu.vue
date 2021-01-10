@@ -49,12 +49,12 @@
 
       <van-cell center title="运算范围" label="Operation Range" value="">
         <van-row>
-          <van-col span="4"></van-col>
-          <van-col span="4"><span @click="clickRange('f1', 'f2', 0, 2)"> + </span></van-col>
-          <van-col span="4"><span @click="clickRange('f1', 'f2', 1, 2)"> - </span></van-col>
-          <van-col span="4"><span @click="clickRange('f1', 'f2', 2, 2)"> × </span></van-col>
-          <van-col span="4"><span @click="clickRange('f1', 'f2', 3, 2)"> ÷ </span></van-col>
-          <van-col span="4"><span @click="clickRange('f1', 'f2', 4, 2)"> ^ </span></van-col>
+          <van-col span="3"><span @click="f1 = 0; f2 = 1"> +- </span></van-col>
+          <van-col span="4"><span @click="f1 = 2; f2 = 3"> ×÷ </span></van-col>
+          <van-col span="4"><span @click="f1 = 0; f2 = 2"> +-× </span></van-col>
+          <van-col span="5"><span @click="f1 = 0; f2 = 3"> +-×÷ </span></van-col>
+          <van-col span="4"><span @click="a1 = 2; a2 = 2; b1 = 2; b2 = 20;f1 = 4; f2 = 4"> 2^ </span></van-col>
+          <van-col span="4"><span @click="a1 = 2; a2 = 20; b1 = 2; b2 = 2;f1 = 4; f2 = 4"> ^2 </span></van-col>
         </van-row>
         <van-row>
           <van-col span="12">
@@ -101,10 +101,10 @@ export default {
     }
   },
   methods: {
-    clickRange(name1, name2, i, end = 9) {
+    clickRange(name1, name2, i) {
       if (this[name1] === i && this[name2] === i) {
         this[name1] = 0;
-        this[name2] = end;
+        this[name2] = 9;
       } else {
         this[name1] = i;
         this[name2] = i;
