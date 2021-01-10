@@ -3,19 +3,44 @@ import App from './App.vue'
 import router from './router'
 Vue.use(require('vue-wechat-title'))
 
-import {Grid, GridItem, NavBar, Popup, CountDown, Col, Row, Field, NumberKeyboard} from 'vant';
+// 按照文档的顺序，同一个组件引入的放在同一行
+import {
+  Button,
+  Cell, CellGroup,
+  Col, Row,
+  Popup,
+  NumberKeyboard,
+  Stepper,
+  Switch,
+  CountDown,
+  Divider,
+  Grid, GridItem,
+  NavBar,
+} from 'vant';
 
+Vue.use(Button);
+Vue.use(Cell);
+Vue.use(CellGroup);
+Vue.use(Col);
+Vue.use(Row);
+Vue.use(Popup);
+Vue.use(NumberKeyboard);
+Vue.use(Stepper);
+Vue.use(Switch);
+Vue.use(CountDown);
+Vue.use(Divider);
 Vue.use(Grid);
 Vue.use(GridItem);
 Vue.use(NavBar);
-Vue.use(Popup);
-Vue.use(CountDown);
-Vue.use(Field);
-Vue.use(Col);
-Vue.use(Row);
-Vue.use(NumberKeyboard);
 
 Vue.config.productionTip = false
+
+Vue.prototype.intParam = function (name, defaultValue) {
+  if(this.$route.query[name] === undefined) {
+    return defaultValue
+  }
+  return parseInt(String(this.$route.query[name]))
+}
 
 new Vue({
   router,

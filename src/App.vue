@@ -33,6 +33,14 @@
   * {
     text-align: center;
   }
+  .van-cell-group__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .van-cell__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
   .game_formula {
     margin-top: 20px;
     font-size: 40px;
