@@ -20,6 +20,9 @@
           <van-col span="2" v-for="i in 10" :key="i" >
             <span @click="clickRange('a1', 'a2', i - 1)">{{ i - 1 }}</span>
           </van-col>
+          <van-col span="4">
+            <span @click="a1 = 0; a2 = 9">0~9</span>
+          </van-col>
         </van-row>
         <van-row>
           <van-col span="12">
@@ -35,6 +38,9 @@
         <van-row>
           <van-col span="2" v-for="i in 10" :key="i" >
             <span @click="clickRange('b1', 'b2', i - 1)">{{ i - 1 }}</span>
+          </van-col>
+          <van-col span="4">
+            <span @click="b1 = 0; b2 = 9">0~9</span>
           </van-col>
         </van-row>
         <van-row>
