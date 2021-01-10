@@ -7,7 +7,7 @@
         <van-col span="2">{{question.f}}</van-col>
         <van-col span="4">{{question.n}}</van-col>
         <van-col span="2">=</van-col>
-        <van-col span="5">{{answer === undefined ? question.ma : answer}}</van-col>
+        <van-col span="5" :style="answerStyle">{{answer === undefined ? question.ma : answer}}</van-col>
         <van-col span="2"></van-col>
         <van-col span="4"></van-col>
       </div>
@@ -23,6 +23,7 @@
     props: {
       question: Object,
       answer: String,
+      answerStyle: String,
     },
   };
 </script>

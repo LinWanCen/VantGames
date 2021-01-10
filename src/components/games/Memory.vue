@@ -205,37 +205,39 @@ export default {
           }
         }
       }
-      if ((this.rightCount + this.wrongCount) === this.n) {
-        // 减去倒计时的 3 秒
-        let memoryTime = this.midTime - this.startTime - 3000;
-        let answerTime = new Date().getTime() - this.midTime;
-        let memoryTimeCn = timeFormatCn(memoryTime);
-        let answerTimeCn = timeFormatCn(answerTime);
-        this.score = this.n + ' 记住 ' + this.rightCount + ' 个' +
-            '\n记忆时长 ' + memoryTimeCn +
-            '\n填写时长 ' + answerTimeCn;
-        this.scoreEn = this.n + ' remember ' + this.rightCount +
-            '\nmemory time: ' + timeFormatEn(memoryTime) +
-            '\nanswer time: ' + timeFormatEn(answerTime);
-        this.showScore = true;
-        MtaH5.clickStat('MemoryScore', {
-          'rightcount': this.rightCount,
-          'n': this.n,
-          'symbol': String.fromCodePoint(this.symbol),
-          'memorytime': memoryTime,
-          'answertime': answerTime,
-          'memorytimecn': memoryTimeCn,
-          'answertimecn': answerTimeCn,
-        })
+      // 还未答完 return
+      if ((this.rightCount + this.wrongCount) !== this.n) {
+        do {
+          this.selectIndex++;
+          if (this.displayArr[this.selectIndex] === undefined) {
+            this.selectIndex = 0;
+          }
+        } while (this.displayArr[this.selectIndex] !== "\u2002");
+        this.jump(this.selectIndex);
         return;
       }
-      do {
-        this.selectIndex++;
-        if (this.displayArr[this.selectIndex] === undefined) {
-          this.selectIndex = 0;
-        }
-      } while (this.displayArr[this.selectIndex] !== "\u2002");
-      this.jump(this.selectIndex);
+
+      // 减去倒计时的 3 秒
+      let memoryTime = this.midTime - this.startTime - 3000;
+      let answerTime = new Date().getTime() - this.midTime;
+      let memoryTimeCn = timeFormatCn(memoryTime);
+      let answerTimeCn = timeFormatCn(answerTime);
+      this.score = this.n + ' 记住 ' + this.rightCount + ' 个' +
+          '\n记忆时长 ' + memoryTimeCn +
+          '\n填写时长 ' + answerTimeCn;
+      this.scoreEn = this.n + ' remember ' + this.rightCount +
+          '\nmemory time: ' + timeFormatEn(memoryTime) +
+          '\nanswer time: ' + timeFormatEn(answerTime);
+      this.showScore = true;
+      MtaH5.clickStat('MemoryScore', {
+        'rightcount': this.rightCount,
+        'n': this.n,
+        'symbol': String.fromCodePoint(this.symbol),
+        'memorytime': memoryTime,
+        'answertime': answerTime,
+        'memorytimecn': memoryTimeCn,
+        'answertimecn': answerTimeCn,
+      })
     },
 
     Refresh() {
