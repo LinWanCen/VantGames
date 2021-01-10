@@ -21,6 +21,11 @@
 
       <van-cell center title="行列数" label="Row and Column" value="">
         <van-row>
+          <van-col span="4" v-for="i in 4" :key="i" >
+            <span @click="row = i + 1; col = i + 1">{{ i + 1 }}</span>
+          </van-col>
+        </van-row>
+        <van-row>
           <van-col span="12">
             <van-stepper v-model="row" :min="1" :button-size="bottonSize"/>
           </van-col>
@@ -33,6 +38,14 @@
       <van-cell center title="数字范围" label="Number Range" value="">
         <van-row>
           <van-col span="12">
+            <span @click="a1 = 0; a2 = 9; repeat = true">0 ~ 9</span>
+          </van-col>
+          <van-col span="12">
+            <span @click="range()">row * col</span>
+          </van-col>
+        </van-row>
+        <van-row>
+          <van-col span="12">
             <van-stepper v-model="a1" :min="0" :max="a2" :button-size="bottonSize"/>
           </van-col>
           <van-col span="12">
@@ -40,8 +53,6 @@
           </van-col>
         </van-row>
       </van-cell>
-
-      <van-cell center title="根据行列数计算数字范围" label="Calculate Number Range by rows and columns" @click="range()"/>
 
     </van-cell-group>
 

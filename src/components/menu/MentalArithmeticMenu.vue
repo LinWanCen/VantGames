@@ -4,18 +4,28 @@
     <van-cell-group title="选项 Options">
 
       <van-cell center title="题数" label="Number of Questions" value="">
+        <van-row>
+          <van-col span="4"><span @click="n = 5">5</span></van-col>
+          <van-col span="4"><span @click="n = 10">10</span></van-col>
+          <van-col span="4"><span @click="n = 25">25</span></van-col>
+          <van-col span="4"><span @click="n = 50">50</span></van-col>
+          <van-col span="4"><span @click="n = 50">60</span></van-col>
+          <van-col span="4"><span @click="n = 100">100</span></van-col>
+        </van-row>
         <van-stepper v-model="n" :min="1" :step="5"/>
       </van-cell>
 
       <van-cell center title="数字A范围" label="Number Range of A" value="">
         <van-row>
-          <van-col span="2">
-            <span @click="clickRange('a1', 'a2')">2</span>
+          <van-col span="2" v-for="i in 10" :key="i" >
+            <span @click="clickRange('a1', 'a2', i - 1)">{{ i - 1 }}</span>
           </van-col>
-          <van-col span="11">
+        </van-row>
+        <van-row>
+          <van-col span="12">
             <van-stepper v-model="a1" :min="0" :max="a2" :button-size="bottonSize"/>
           </van-col>
-          <van-col span="11">
+          <van-col span="12">
             <van-stepper v-model="a2" :min="a1" :button-size="bottonSize"/>
           </van-col>
         </van-row>
@@ -23,19 +33,29 @@
 
       <van-cell center title="数字B范围" label="Number Range of B" value="">
         <van-row>
-          <van-col span="2">
-            <span @click="clickRange('b1', 'b2')">2</span>
+          <van-col span="2" v-for="i in 10" :key="i" >
+            <span @click="clickRange('b1', 'b2', i - 1)">{{ i - 1 }}</span>
           </van-col>
-          <van-col span="11">
+        </van-row>
+        <van-row>
+          <van-col span="12">
             <van-stepper v-model="b1" :min="0" :max="b2" :button-size="bottonSize"/>
           </van-col>
-          <van-col span="11">
+          <van-col span="12">
             <van-stepper v-model="b2" :min="b1" :button-size="bottonSize"/>
           </van-col>
         </van-row>
       </van-cell>
 
-      <van-cell center title="运算范围 + - × ÷ ^" label="Operation Range + - × ÷ ^" value="">
+      <van-cell center title="运算范围" label="Operation Range" value="">
+        <van-row>
+          <van-col span="4"></van-col>
+          <van-col span="4"><span @click="clickRange('f1', 'f2', 0, 2)"> + </span></van-col>
+          <van-col span="4"><span @click="clickRange('f1', 'f2', 1, 2)"> - </span></van-col>
+          <van-col span="4"><span @click="clickRange('f1', 'f2', 2, 2)"> × </span></van-col>
+          <van-col span="4"><span @click="clickRange('f1', 'f2', 3, 2)"> ÷ </span></van-col>
+          <van-col span="4"><span @click="clickRange('f1', 'f2', 4, 2)"> ^ </span></van-col>
+        </van-row>
         <van-row>
           <van-col span="12">
             <van-stepper v-model="f1" :min="0" :max="f2" :button-size="bottonSize"/>
@@ -81,13 +101,13 @@ export default {
     }
   },
   methods: {
-    clickRange(name1, name2) {
-      if (this[name1] === 2 && this[name2] === 2) {
+    clickRange(name1, name2, i, end = 9) {
+      if (this[name1] === i && this[name2] === i) {
         this[name1] = 0;
-        this[name2] = 9;
+        this[name2] = end;
       } else {
-        this[name1] = 2;
-        this[name2] = 2;
+        this[name1] = i;
+        this[name2] = i;
       }
     },
   },
