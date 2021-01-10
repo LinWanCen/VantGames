@@ -7,23 +7,29 @@
         <van-stepper v-model="n" :min="1" :step="5"/>
       </van-cell>
 
-      <van-cell center title="数字A范围" label="Number Range of A" value="" @click="clickRange('a1', 'a2')">
+      <van-cell center title="数字A范围" label="Number Range of A" value="">
         <van-row>
-          <van-col span="12">
+          <van-col span="2">
+            <span @click="clickRange('a1', 'a2')">2</span>
+          </van-col>
+          <van-col span="11">
             <van-stepper v-model="a1" :min="0" :max="a2" :button-size="bottonSize"/>
           </van-col>
-          <van-col span="12">
+          <van-col span="11">
             <van-stepper v-model="a2" :min="a1" :button-size="bottonSize"/>
           </van-col>
         </van-row>
       </van-cell>
 
-      <van-cell center title="数字B范围" label="Number Range of B" value="" @click="clickRange('b1', 'b2')">
+      <van-cell center title="数字B范围" label="Number Range of B" value="">
         <van-row>
-          <van-col span="12">
+          <van-col span="2">
+            <span @click="clickRange('b1', 'b2')">2</span>
+          </van-col>
+          <van-col span="11">
             <van-stepper v-model="b1" :min="0" :max="b2" :button-size="bottonSize"/>
           </van-col>
-          <van-col span="12">
+          <van-col span="11">
             <van-stepper v-model="b2" :min="b1" :button-size="bottonSize"/>
           </van-col>
         </van-row>
