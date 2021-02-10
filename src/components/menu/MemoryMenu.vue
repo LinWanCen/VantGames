@@ -27,10 +27,10 @@
         </van-row>
         <van-row>
           <van-col span="12">
-            <van-stepper v-model="row" :min="1" :button-size="bottonSize"/>
+            <van-stepper v-model="row" :min="1" :button-size="buttonSize"/>
           </van-col>
           <van-col span="12">
-            <van-stepper v-model="col" :min="1" :button-size="bottonSize"/>
+            <van-stepper v-model="col" :min="1" :button-size="buttonSize"/>
           </van-col>
         </van-row>
       </van-cell>
@@ -46,10 +46,10 @@
         </van-row>
         <van-row>
           <van-col span="12">
-            <van-stepper v-model="a1" :min="0" :max="a2" :button-size="bottonSize"/>
+            <van-stepper v-model="a1" :min="0" :max="a2" :button-size="buttonSize"/>
           </van-col>
           <van-col span="12">
-            <van-stepper v-model="a2" :min="a1" :max="keyboard ? 9: undefined" :button-size="bottonSize"/>
+            <van-stepper v-model="a2" :min="a1" :max="keyboard ? 9: undefined" :button-size="buttonSize"/>
           </van-col>
         </van-row>
       </van-cell>
@@ -84,7 +84,7 @@
 export default {
   data() {
     return {
-      bottonSize: '20px',
+      buttonSize: '20px',
       hideFound: true,
       line: false,
       repeat: false,

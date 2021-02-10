@@ -26,10 +26,10 @@
         </van-row>
         <van-row>
           <van-col span="12">
-            <van-stepper v-model="a1" :min="0" :max="a2" :button-size="bottonSize"/>
+            <van-stepper v-model="a1" :min="0" :max="a2" :button-size="buttonSize"/>
           </van-col>
           <van-col span="12">
-            <van-stepper v-model="a2" :min="a1" :button-size="bottonSize"/>
+            <van-stepper v-model="a2" :min="a1" :button-size="buttonSize"/>
           </van-col>
         </van-row>
       </van-cell>
@@ -45,10 +45,10 @@
         </van-row>
         <van-row>
           <van-col span="12">
-            <van-stepper v-model="b1" :min="0" :max="b2" :button-size="bottonSize"/>
+            <van-stepper v-model="b1" :min="0" :max="b2" :button-size="buttonSize"/>
           </van-col>
           <van-col span="12">
-            <van-stepper v-model="b2" :min="b1" :button-size="bottonSize"/>
+            <van-stepper v-model="b2" :min="b1" :button-size="buttonSize"/>
           </van-col>
         </van-row>
       </van-cell>
@@ -64,10 +64,10 @@
         </van-row>
         <van-row>
           <van-col span="12">
-            <van-stepper v-model="f1" :min="0" :max="f2" :button-size="bottonSize"/>
+            <van-stepper v-model="f1" :min="0" :max="f2" :button-size="buttonSize"/>
           </van-col>
           <van-col span="12">
-            <van-stepper v-model="f2" :min="f1" :max="4" :button-size="bottonSize"/>
+            <van-stepper v-model="f2" :min="f1" :max="4" :button-size="buttonSize"/>
           </van-col>
         </van-row>
       </van-cell>
@@ -96,7 +96,7 @@
 export default {
   data() {
     return {
-      bottonSize: '20px',
+      buttonSize: '20px',
       a1: 0,
       a2: 9,
       b1: 0,
