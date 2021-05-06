@@ -54,6 +54,24 @@
         </van-row>
       </van-cell>
 
+      <van-cell center title="时间限制" label="Time Limit" value="">
+        <van-row>
+          <van-col span="12">
+          </van-col>
+          <van-col span="12">
+            <span @click="time2 = 60">60</span>
+          </van-col>
+        </van-row>
+        <van-row>
+          <van-col span="12">
+            <van-stepper v-model="time1" :min="0" :button-size="buttonSize"/>
+          </van-col>
+          <van-col span="12">
+            <van-stepper v-model="time2" :min="1" :button-size="buttonSize"/>
+          </van-col>
+        </van-row>
+      </van-cell>
+
     </van-cell-group>
 
     <van-divider :style="{ borderColor: '#1989fa' }"/>
@@ -93,6 +111,8 @@ export default {
       a2: 25,
       row: 5,
       col: 5,
+      time1: 2,
+      time2: 60,
     }
   },
 
@@ -102,6 +122,7 @@ export default {
       this.$router.replace('/Memory' +
           '?row=' + this.row +
           '&col=' + this.col +
+          '&timeLimit=' + (this.time1 * this.time2) +
           '&symbol=' + symbol +
           '&keyLen=' + keyLen +
           '&hideFound=' + this.hideFound +

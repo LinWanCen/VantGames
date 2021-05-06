@@ -4,14 +4,14 @@
     <!-- 开始答题按钮（放在倒计时前面避免先出现） -->
     <van-popup safe-area-inset-bottom
                v-model="showButton" :overlay="false" duration="0" position="bottom">
+      <van-divider/>
+      <van-count-down class="Memory_font" millisecond :time="timeLimit" format="mm:ss" @finish="finish"/>
+      <van-divider/>
       <van-button @click="speakAll()">🔊</van-button>
       <van-divider/>
       <van-button type="primary" @click="startToAnswer">记住了</van-button>
       <van-divider/>
     </van-popup>
-
-    <!-- 倒计时 -->
-    <Start></Start>
 
     <!-- 行式 -->
     <van-cell center v-if="line">
@@ -49,6 +49,9 @@
       <pre class="game_formula" style="margin-top: 0;font-size: 20px;">{{ scoreEn }}</pre>
     </van-popup>
 
+    <!-- 倒计时 -->
+    <Start></Start>
+
   </div>
 </template>
 
@@ -66,6 +69,7 @@ export default {
   },
   data() {
     return {
+      timeLimit: this.intParam("timeLimit", 2 * 60) * 1000 + 3 * 1000,
       displayArr: [],
       answerArr: [],
       styleArr: [],
@@ -155,6 +159,11 @@ export default {
       speak(this.answerArrStr)
     },
 
+    finish() {
+      if (this.$route.query.timeLimit !== "0" && this.showButton) {
+        this.startToAnswer();
+      }
+    },
     startToAnswer() {
       this.showButton = false;
       if (this.keyboard) {

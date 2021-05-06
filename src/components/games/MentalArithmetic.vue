@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- 倒计时 -->
-    <Start></Start>
 
     <!-- 算式 -->
     <MentalArithmeticLine :question="questions[currentIndex - 2]"></MentalArithmeticLine>
@@ -21,6 +19,9 @@
       <pre class="game_formula" style="font-size: 30px;">{{ score }}</pre>
       <pre class="game_formula" style="margin-top: 0;font-size: 20px;">{{ scoreEn }}</pre>
     </van-popup>
+
+    <!-- 倒计时 -->
+    <Start></Start>
 
   </div>
 </template>
