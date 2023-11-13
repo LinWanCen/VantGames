@@ -68,8 +68,18 @@
         let a = this.a1 + Math.floor(Math.random() * aLen);
         let b = this.b1 + Math.floor(Math.random() * bLen);
         let f = this.f1 + Math.floor(Math.random() * fLen);
+        // 除数为 0 重新随机
+        if (f === 3 && b === 0) {
+          if (fLen === 1 && bLen === 1) {
+            break;
+          }
+          do  {
+            b = this.b1 + Math.floor(Math.random() * bLen);
+            f = this.f1 + Math.floor(Math.random() * fLen);
+          } while (f === 3 && b === 0);
+        }
         // 指定数时能有交换
-        if (f !== 4 && Math.floor(Math.random() * 2) === 1) {
+        if (f !== 4 && !(f === 3 && a === 0) && Math.floor(Math.random() * 2) === 1) {
           let t = a;
           a = b;
           b = t;
