@@ -109,12 +109,12 @@
     methods: {
 
       onInput(value) {
-        if (this.currentInput === '_') {
+        let currentQuestion = this.questions[this.currentIndex];
+        if (this.currentInput === '_' || this.currentInput.length === currentQuestion.a.toString().length) {
           this.currentInput = '' + value;
         } else {
           this.currentInput = '' + this.currentInput + value;
         }
-        let currentQuestion = this.questions[this.currentIndex];
 
         // 有错及时红色提示打断
         if (currentQuestion.a.toString().substr(0, this.currentInput.length) !== this.currentInput) {
